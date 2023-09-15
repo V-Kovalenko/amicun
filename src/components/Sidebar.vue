@@ -1,21 +1,45 @@
 <script setup>
 
-// import {toggleTheme, currentTheme} from "@/theme/theme";
 import useColorThemeStore from "@/stores/color-theme";
-import {toRefs, ref,computed} from "vue";
+import useUserStore from "@/stores/user";
+import {toRefs, ref, computed, onMounted} from "vue";
 
-const colorThemeStore = useColorThemeStore()
+/*--данные из useColorThemeStore-->>>>*/
+const colorThemeStore = useColorThemeStore() // хук по смене цвета темы сайта
 const {changeColorTheme, colorTheme} = toRefs(colorThemeStore)
-const toggleStyle = computed(() => [
+const toggleStyle = computed(() => [  // динамический стиль кнопки смены темы
     {'header__button_dark': colorTheme.value === 'dark-theme'},
 ])
+/*--данные из useColorThemeStore--<<<<*/
+
+/*--данные из useEmployeeStore--<<<<*/
+const employeeStore = useUserStore()
+const {user} = toRefs(employeeStore)
+/*--данные из useEmployeeStore-->>>>*/
+/*--отображение даты-->>>>*/
+const currentData = ref('') // Дата
+const currentTime = ref('') // Время
+onMounted(() => {
+  const updateDataTime = () => {  // обновление даты и время
+    const currentDataTime = new Date()
+    currentData.value = currentDataTime.toLocaleDateString()
+    currentTime.value = currentDataTime.toLocaleTimeString()
+  }
+  updateDataTime()
+  setInterval(updateDataTime, 1000)
+})
+/*--отображение даты--<<<<*/
+
+
 </script>
 
 <template>
   <aside class="sidebar">
+
     <div class="sidebar__header header">
       <div class="header__date">
-        data
+        <div>{{currentData}}</div>
+        <div>{{currentTime}}</div>
       </div>
       <div class="header__logout">
         <p>Выход</p>
@@ -30,6 +54,18 @@ const toggleStyle = computed(() => [
         </div>
       </div>
     </div>
+    <div class="sidebar__content">
+      <div class="sidebar__about-person about-person">
+        <div class="about-person__name">
+          name
+        </div>
+        <div class="about-person__age">age</div>
+        <div class="about-person__personnel-umber">
+          <p>Таб №: ГОКИ</p>
+        </div>
+        <div class="about-person__position">job</div>
+      </div>
+    </div>
   </aside>
 </template>
 
@@ -40,6 +76,7 @@ const toggleStyle = computed(() => [
     .header {
       display: flex;
       justify-content: space-between;
+      position: relative;
       &__date {
 
       }
@@ -54,11 +91,13 @@ const toggleStyle = computed(() => [
         height: 20px;
         background-color: $bg-sidebar_dark;
         border-radius: 1rem;
-        position: relative;
         display: flex;
         align-items: center;
         justify-content: start;
         text-align: center;
+        position: absolute;
+        top: 50px;
+        left: 300px;
       }
       &__button_dark {
         background-color: $bg-sidebar_light;
@@ -86,5 +125,31 @@ const toggleStyle = computed(() => [
       }
 
     }
+    &__content {
+      display: flex;
+    }
+    &__about-person {
+      margin-top: 100px;
+    }
+      .about-person {
+        display: flex;
+        background-color: $bg-content_dark;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        &__name {
+
+        }
+        &__age {
+
+        }
+        &__personnel-umber {
+
+        }
+        &__position {
+
+        }
+      }
+
   }
 </style>
