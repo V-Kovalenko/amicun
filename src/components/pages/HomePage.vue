@@ -29,7 +29,7 @@ const {colorTheme} = toRefs(colorThemeStore)
   height: 100vh;
 
   &__sidebar {
-    width: 400px;
+    width: 620px;
     grid-area: aside;
 
     border-radius: 0 12px 12px 0;
