@@ -1,0 +1,21 @@
+//@mixin dark-theme_sidebar ($bg-sidebar, $text-color){
+//  background: $bg-sidebar;
+//  color: $text-color;
+//}
+//@mixin dark-theme_content ($bg-content, $text-color){
+//  background: $bg-content;
+//  color: $text-color;
+//}
+//$bg-sidebar: #797979;
+$bg-content: #2c2b2b;
+//$text-color: #000000;
+@mixin dark-theme {
+  $bg-sidebar: #353D54;
+  $bg-content: #566A8F;
+  $text-color: #E6E6E6;
+}
+
+
+//$bg-sidebar: #353D54;
+//$bg-content: #566A8F;
+//$text-color: #E6E6E6;

@@ -1,0 +1,29 @@
+@import "_reset";
+@import "colors";
+@import "themes/light-theme";
+@import "themes/dark-theme";
+
+
+:root {
+  //@if $theme == dark {
+  //  $bg-sidebar: $bg-sidebar_dark;
+  //  $bg-content: $bg-content_dark;
+  //  $text-color: $text-color_dark;
+  //} @else {
+  //  $bg-sidebar: $bg-sidebar_light;
+  //  $bg-content: $bg-content_light;
+  //  $text-color: $text-color_light;
+  //}
+}
+
+//.dark-theme {
+//  $bg-sidebar: #353D54;
+//  $bg-content: #566A8F;
+//  $text-color: #E6E6E6;
+//}
+//.light-theme {
+//$bg-sidebar: #dfcfea;
+//$bg-content: #55698E;
+//$text-color: #000000;
+//@include light-theme
+//}
