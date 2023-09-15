@@ -26,13 +26,14 @@ const {colorTheme} = toRefs(colorThemeStore)
   display: grid;
   grid-template-areas: 'aside content';
   grid-template-columns: auto 1fr;
-  height: 100vh;
+  min-height: 100vh;
+
 
   &__sidebar {
     width: 620px;
     grid-area: aside;
-
     border-radius: 0 12px 12px 0;
+    //height: 100vh;
   }
 
   &__content {

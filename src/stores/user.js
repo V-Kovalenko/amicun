@@ -3,57 +3,45 @@ import {reactive} from "vue";
 
 
 const useUserStore = defineStore('employee', () => {
-    const user = reactive({
+    const users = reactive([{
         name: 'Моисеев Михал Сергеевич',
         age: '13.08.1980',
         personnelNumber: '0000',
         position: 'Электрослесарь (слесарь дежурный по ремонту оборудования) I разряда'
-    })
+    }])
 
-    const trainingAndCertification = reactive({
-        instruction: {
+    const certificationThrough = 111
+
+    const trainingAndCertification = reactive([
+        {
             title: 'Инструктаж',
-            img: 'img',
-            colors: {
-                '#56698f': null,
-                '#EF7F1A': false,
-                '#B2D63C': true
-            }
+            url: new URL("@/assets/images/instructions.png", import.meta.url),
+            colors: true,
+            tests: '',
         },
-        examiner: {
+        {
             title: 'Предсменный экзаменатор',
-            img: 'img',
-            colors: {
-                '#56698f': null,
-                '#EF7F1A': false,
-                '#B2D63C': true
-            }
+            url: new URL("@/assets/images/examiner.png", import.meta.url),
+            colors: true,
+            tests: '',
         },
-        test: {
+        {
             title: 'Тестов выполнено',
-            img: 'img',
-            colors: {
-                '#56698f': null,
-                '#EF7F1A': false,
-                '#B2D63C': true
-            },
-            tests: 122
+            url: '',
+            colors: true,
+            tests: 122,
         },
-        certification: {
+        {
             title: 'Аттестация через',
-            img: 'img',
-            colors: {
-                '#56698f': null,
-                '#EF7F1A': false,
-                '#B2D63C': true
-            },
-            days: 1825
-        },
-
-    })
+            url: '',
+            colors: false,
+            tests: ''
+        }]
+    )
     return {
-        user,
-        trainingAndCertification
+        users,
+        trainingAndCertification,
+        certificationThrough
     }
 })
 export default useUserStore
