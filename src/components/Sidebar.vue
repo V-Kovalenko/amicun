@@ -3,6 +3,7 @@
 import useColorThemeStore from "@/stores/color-theme";
 import useUserStore from "@/stores/user";
 import {toRefs, ref, computed, onMounted} from "vue";
+import user from "@/stores/user";
 
 /*--данные из useColorThemeStore-->>>>*/
 const colorThemeStore = useColorThemeStore() // хук по смене цвета темы сайта
@@ -42,7 +43,21 @@ onMounted(() => {
 })
 /*--отображение даты--<<<<*/
 
+/*LOGIN >>>*/
+const userName = ref('') // ввод ФИО для логина, в данном случае Моисеев Михал Сергеевич
+const password = ref('') // ввод пароля для логина, в данном случае 12345678
 
+function login(user) { // функция чтобы залогиница
+  if (userName.value === user.name && password.value === user.password) {
+    user.logged = !user.logged
+  }
+  userName.value = ''
+  password.value = ''
+}
+function logUot(user) { // функция чтобы разлогиниться
+  user.logged = !user.logged
+}
+/*LOGIN <<<*/
 </script>
 
 <template>
@@ -56,7 +71,13 @@ onMounted(() => {
       <!--data-->
 
       <!--logout-->
-      <div class="header__logout">
+      <div class="header__login" v-for="user in users" v-show="user.logged === false">
+        <input type="text" v-model="userName" placeholder="ФИО">
+        <input type="password" v-model="password" placeholder="Введите пароль">
+        <button class="header__button-login" @click="login(user)">Войти</button>
+      </div>
+
+      <div @click="logUot(user)" class="header__logout" v-for="user in users" v-show="user.logged === true">
         <p>Выход</p>
         <div class="header__icon">
           <span class="material-icons">logout</span>
@@ -74,9 +95,9 @@ onMounted(() => {
     </div>
     <!--button-->
 
-    <div class="sidebar__content">
+    <div  class="sidebar__content">
       <!--about-person-->
-      <div class="sidebar__about-person about-person" v-for="(user, index) in users" :key="index">
+      <div v-show="user.logged === true" class="sidebar__about-person about-person" v-for="(user, index) in users" :key="index">
         <div class="about-person__name">
           <h3>{{ user.name }}</h3>
         </div>
@@ -85,6 +106,17 @@ onMounted(() => {
           <p>Таб №: ГОКИ {{ user.personnelNumber }}</p>
         </div>
         <div class="about-person__position">{{ user.position }}</div>
+      </div>
+
+      <div v-show="user.logged === false" class="sidebar__about-person about-person" v-for="(user, index) in users" :key="index">
+        <div class="about-person__name">
+          <h3> xxx </h3>
+        </div>
+        <div class="about-person__age"><b>xxx </b></div>
+        <div class="about-person__personnel-umber">
+          <p>Таб №: ГОКИ  xxx </p>
+        </div>
+        <div class="about-person__position"> xxx </div>
       </div>
       <!--about-person-->
 
@@ -134,9 +166,19 @@ onMounted(() => {
     &__date {
 
     }
+    &__login {
+      display: flex;
+      gap: 10px;
+      height: 20px;
+
+    }
+    &__button-login {
+      color: white;
+    }
 
     &__logout {
       display: flex;
+      cursor: pointer;
     }
 
     &__icon {
@@ -155,6 +197,7 @@ onMounted(() => {
       position: absolute;
       top: 50px;
       left: 530px;
+      cursor: pointer;
     }
 
     &__button_dark {
@@ -172,6 +215,7 @@ onMounted(() => {
       border-radius: 50%;
       top: 0;
       left: 0;
+
     }
 
     &__button-slider_black {

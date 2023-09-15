@@ -1,5 +1,4 @@
 <script setup>
-import {ref} from "vue";
 import useColorThemeStore from "@/stores/color-theme";
 import {toRefs} from "vue";
 const colorThemeStore = useColorThemeStore()
@@ -16,7 +15,6 @@ const {colorTheme} = toRefs(colorThemeStore)
 </template>
 
 <style scoped lang="scss">
-//@import "@/assets/scss/themes/index.scss";
 @import "@/assets/scss/main";
 @import "@/assets/scss/themes/dark-theme";
 @import "@/assets/scss/themes/light-theme";

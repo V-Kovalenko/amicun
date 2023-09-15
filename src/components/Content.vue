@@ -1,5 +1,5 @@
 <script setup>
-import {reactive} from "vue";
+import {reactive, ref} from "vue";
 
 const cards = reactive([
   {title: 'Начать работу', url: new URL('@/assets/images/content/work.png', import.meta.url), path: '/work'},
@@ -7,6 +7,11 @@ const cards = reactive([
   {title: 'Обучение', url: new URL('@/assets/images/content/education.png', import.meta.url), path: '/education'},
   {title: 'Достижения', url: new URL('@/assets/images/content/achievements.png', import.meta.url), path: '/achievements'},
 ])
+
+const countMessage = ref(0)
+
+
+
 </script>
 
 <template>
@@ -15,6 +20,7 @@ const cards = reactive([
       <img src="@/assets/images/content/logoAmicun.png" alt="" class="content__logo-img">
     </div>
     <div class="container">
+      <span class="content__show-message">{{countMessage}}</span>
       <RouterLink
           v-for="(card, index) in cards"
           :to="card.path"
@@ -23,6 +29,7 @@ const cards = reactive([
         <div class="content__card card" >
           <div class="card" >
             <div class="card__title">{{card.title}}</div>
+
             <div class="card__img">
               <img :src="card.url" alt="" class="card__img-img">
             </div>
@@ -45,7 +52,21 @@ const cards = reactive([
   margin-top: 160px;
 }
 .content {
-
+  &__show-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: greenyellow;
+    color: black;
+    position: absolute;
+    top: 170px;
+    right: 80px;
+    z-index: 2;
+  }
   &__logo {
 
   }
@@ -57,6 +78,10 @@ const cards = reactive([
   }
   &__card {
     background-color: #EF7F1A;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+    &:hover{
+      transform: translateY(-5px);
+    }
   }
 
   .card {

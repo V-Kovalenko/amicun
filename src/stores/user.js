@@ -7,12 +7,14 @@ const useUserStore = defineStore('employee', () => {
         name: 'Моисеев Михал Сергеевич',
         age: '13.08.1980',
         personnelNumber: '0000',
-        position: 'Электрослесарь (слесарь дежурный по ремонту оборудования) I разряда'
+        position: 'Электрослесарь (слесарь дежурный по ремонту оборудования) I разряда',
+        password: '12345678',
+        logged: false
     }])
 
-    const certificationThrough = 111
+    const certificationThrough = 111 // отчет до окончания аттестации
 
-    const trainingAndCertification = reactive([
+    const trainingAndCertification = reactive([ // данные об аттестации
         {
             title: 'Инструктаж',
             url: new URL("@/assets/images/instructions.png", import.meta.url),
@@ -38,6 +40,7 @@ const useUserStore = defineStore('employee', () => {
             tests: ''
         }]
     )
+
     return {
         users,
         trainingAndCertification,
