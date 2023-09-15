@@ -57,13 +57,13 @@ onMounted(() => {
     <div class="sidebar__content">
       <div class="sidebar__about-person about-person">
         <div class="about-person__name">
-          name
+          <h3>{{user.name}}</h3>
         </div>
-        <div class="about-person__age">age</div>
+        <div class="about-person__age"><b>{{user.age}}</b></div>
         <div class="about-person__personnel-umber">
-          <p>Таб №: ГОКИ</p>
+          <p>Таб №: ГОКИ {{user.personnelNumber}}</p>
         </div>
-        <div class="about-person__position">job</div>
+        <div class="about-person__position">{{user.position}}</div>
       </div>
     </div>
   </aside>
@@ -137,17 +137,20 @@ onMounted(() => {
         flex-direction: column;
         width: 100%;
         padding: 10px;
+        box-shadow: 0 2px 8px  rgba(0, 0, 0, 1);
+        border-radius: 5px;
         &__name {
+          font-size: 24px;
 
         }
         &__age {
-
+          font-size: 18px;
         }
         &__personnel-umber {
 
         }
         &__position {
-
+          line-height: 14px;
         }
       }
 
