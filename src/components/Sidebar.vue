@@ -22,17 +22,13 @@ const {
   getBarGradient,
   totalNumberOfTests
 } = toRefs(employeeStore)
-const diagramStyles = computed(() => ['training__circle',
-  {'training__circle_blue': trainingAndCertification.value.colors === null}, {'training__circle_orange': trainingAndCertification.value.colors === false},
-  {'training__circle_green': trainingAndCertification.value.colors === true}
-])
-const fun = (it) => {
+
+const getColorDiagram = (it) => {  // получение цвета в зависимости от данных со store (trainingAndCertification)
   return ['training__circle',
     {'training__circle_blue': it.colors === null}, {'training__circle_orange': it.colors === false},
     {'training__circle_green': it.colors === true}
   ]
 }
-console.log('diagramStyles: ', diagramStyles)
 /*--данные из useEmployeeStore--<<<<*/
 
 /*--отображение даты-->>>>*/
@@ -132,40 +128,16 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       </div>
       <!--about-person-->
 
-      <!--training-->
-      <!--      <div class="sidebar__training training">-->
-      <!--        <div class="training__container" v-for="(item, index) in trainingAndCertification" :key="index">-->
-      <!--          <div class="training__card">-->
-
-      <!--              <div class="training__card-title">-->
-      <!--                <h3>{{ item.title }}</h3>-->
-      <!--              </div>-->
-      <!--            <div :class="fun(item)">-->
-      <!--              <div class="training__card-diagram">-->
-      <!--                <img class="training__card-img"-->
-      <!--                     :src="item.url"-->
-      <!--                     alt="img"-->
-      <!--                      v-show="item.title === 'Инструктаж' || item.title === 'Предсменный экзаменатор'"-->
-      <!--                />-->
-      <!--                <span class="training__card-diagram_test" v-show="item.title === 'Тестов выполнено'">{{item.tests}}</span>-->
-      <!--                <span class="training__card-diagram_days" v-show="item.title === 'Аттестация через'">{{certificationThrough}}</span>-->
-      <!--              </div>-->
-      <!--            </div>-->
-
-      <!--          </div>-->
-      <!--        </div>-->
-
-
-      <!--      </div>-->
-
-      <!-- training instructions >>>>>-->
+      <!--training   >>>>>-->
       <div class="sidebar__training training">
+      <!-- training instructions >>>>>-->
+
         <div class="training__container">
           <div class="training__card">
             <div class="training__card-title">
               <h3>{{ trainingAndCertification[0].title }}</h3>
             </div>
-            <div class="training__circle" :class="fun(trainingAndCertification[0])">
+            <div class="training__circle" :class="getColorDiagram(trainingAndCertification[0])">
               <div class="training__card-diagram">
                 <div class="training__card-diagram_test">
                   <img :src="trainingAndCertification[0].url" alt="">
@@ -174,17 +146,17 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
             </div>
           </div>
         </div>
-      </div>
+
       <!-- training instructions <<<<<-->
 
       <!-- training examiner >>>>>-->
-      <div class="sidebar__training training">
+
         <div class="training__container">
           <div class="training__card">
             <div class="training__card-title">
               <h3>{{ trainingAndCertification[1].title }}</h3>
             </div>
-            <div class="training__circle" :class="fun(trainingAndCertification[1])">
+            <div class="training__circle" :class="getColorDiagram(trainingAndCertification[1])">
               <div class="training__card-diagram">
                 <div class="training__card-diagram_test">
                   <img :src="trainingAndCertification[1].url" alt="">
@@ -193,11 +165,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
             </div>
           </div>
         </div>
-      </div>
+
       <!-- training examiner <<<<<-->
 
       <!--training tests-->
-      <div class="sidebar__training training">
+
         <div class="training__container">
           <div class="training__card">
             <div class="training__card-title">
@@ -212,11 +184,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
             </div>
           </div>
         </div>
-      </div>
+
       <!--training tests---<<<<<-->
       <!--training certification >>>>>>-->
 
-      <div class="sidebar__training training">
+
         <div class="training__container">
           <div class="training__card">
             <div class="training__card-title">
@@ -232,10 +204,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
           </div>
         </div>
       </div>
-
       <!--training certification---<<<<<-->
-      <!--training-->
     </div>
+    <!--training   <<<<<<-->
   </aside>
 
 
