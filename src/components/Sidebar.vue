@@ -415,35 +415,3 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
   /*training <<*/
 }
 </style>
-<!--&lt;!&ndash; examiner&ndash;&gt;-->
-<!--<div class="training__examiner">-->
-<!--<div class="training__examiner-title">-->
-<!--  <h3>Предсменный экзаменатор</h3>-->
-<!--  <div class="training__examiner-diagram">-->
-<!--    diagram-->
-<!--  </div>-->
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash; examiner&ndash;&gt;-->
-
-<!--&lt;!&ndash; tests completed&ndash;&gt;-->
-<!--<div class="training__test">-->
-<!--<div class="training__test-title">-->
-<!--  <h3>Тестов выполнено</h3>-->
-<!--  <div class="training__test-diagram">-->
-<!--    diagram-->
-<!--  </div>-->
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash; tests completed&ndash;&gt;-->
-
-<!--&lt;!&ndash; certification&ndash;&gt;-->
-<!--<div class="training__certification">-->
-<!--<div class="training__certification-title">-->
-<!--  <h3>Аттестация через</h3>-->
-<!--  <div class="training__certification-diagram">-->
-<!--    diagram-->
-<!--  </div>-->
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash; certification&ndash;&gt;-->

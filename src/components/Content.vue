@@ -49,7 +49,7 @@ const countMessage = ref(0)
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 160px;
+  margin-top: 10rem;
 }
 .content {
   &__show-message {
@@ -57,30 +57,30 @@ const countMessage = ref(0)
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     border-radius: 50%;
     background-color: greenyellow;
     color: black;
     position: absolute;
-    top: 170px;
-    right: 80px;
+    top: 10.625rem;
+    right: 2.5rem;
     z-index: 2;
   }
   &__logo {
 
   }
   &__logo-img {
-    width: 150px;
+    width: 10rem;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
   }
   &__card {
     background-color: #EF7F1A;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
     &:hover{
-      transform: translateY(-5px);
+      transform: translateY(-0.3125rem);
     }
   }
 
@@ -88,25 +88,22 @@ const countMessage = ref(0)
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 250px;
-    height: 250px;
-    margin: 20px;
+    width: 18rem;
+    height: 15.625rem;
+    margin: 1.25rem;
 
 
     &__title {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 40px;
+      margin-bottom: 2.5rem;
     }
 
     &__img {
-      width: 100px;
+      width: 6.25rem;
 
     }
 
-    &__img-img {
-
-    }
   }
 
 }
