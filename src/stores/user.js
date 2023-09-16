@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {computed, reactive} from "vue";
+import {computed, onMounted, reactive, ref} from "vue";
 
 
 const useUserStore = defineStore('employee', () => {
@@ -11,22 +11,34 @@ const useUserStore = defineStore('employee', () => {
         password: '12345678',
         logged: false
     }])
+// отчет до окончания аттестации
+//     const certificationThrough = 111
+    const certificationThrough = ref(1825)
+    onMounted(() => {
+        const countdownToCertification = () =>{
+                certificationThrough.value = certificationThrough.value - 1
+        }
+        countdownToCertification()
+        setInterval(countdownToCertification, 86400)
+    })
 
-    const certificationThrough = 111 // отчет до окончания аттестации
-    const totalNumberOfTests = reactive({
+
+    /*----for sidebar - пройденные тесты >>>>>*/
+    const totalNumberOfTests = reactive({  //init данные для тестов
         total: 500,
-        passedTests: 122
+        passedTests: 322
 
     })
-    const getBarGradient = (total, passed) => {
-        const percentage = Math.floor(total/passed)*100
-        return `linear-gradient(to right, green ${percentage}%,lightgray ${percentage}%)`
+    const getBarGradient = (total, passed) => { // получение процентного соотношения и линии градиента в зависимости от процента
+        const percentage = Math.floor((passed/total)*100)
+        return `linear-gradient(to left, green ${percentage}%,lightgray ${percentage}%)`
     }
-    const testProgress = computed(() => {
-        return {
+    const testProgress = computed(() => {  //вычисляемое свойство для пройденных тестов
+        return {                                                                        // для динамического style
             background: getBarGradient(totalNumberOfTests.total, totalNumberOfTests.passedTests)
         }
     })
+    /*------for sidebar - пройденные тесты <<<<<*/
 
     const trainingAndCertification = reactive([ // данные об аттестации
         {

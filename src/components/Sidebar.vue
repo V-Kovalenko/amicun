@@ -15,16 +15,22 @@ const toggleStyle = computed(() => [  // динамический стиль к�
 
 /*--данные из useEmployeeStore-->>>>*/
 const employeeStore = useUserStore()
-const {users, trainingAndCertification, certificationThrough, testProgress} = toRefs(employeeStore)
+const {
+  users, trainingAndCertification,
+  certificationThrough,
+  testProgress,
+  getBarGradient,
+  totalNumberOfTests
+} = toRefs(employeeStore)
 const diagramStyles = computed(() => ['training__circle',
-  {'training__circle_blue': trainingAndCertification.value.colors === null},{'training__circle_orange': trainingAndCertification.value.colors === false},
-    {'training__circle_green': trainingAndCertification.value.colors === true}
+  {'training__circle_blue': trainingAndCertification.value.colors === null}, {'training__circle_orange': trainingAndCertification.value.colors === false},
+  {'training__circle_green': trainingAndCertification.value.colors === true}
 ])
 const fun = (it) => {
-    return ['training__circle',
-      {'training__circle_blue': it.colors === null},{'training__circle_orange': it.colors === false},
-      {'training__circle_green': it.colors === true}
-    ]
+  return ['training__circle',
+    {'training__circle_blue': it.colors === null}, {'training__circle_orange': it.colors === false},
+    {'training__circle_green': it.colors === true}
+  ]
 }
 console.log('diagramStyles: ', diagramStyles)
 /*--данные из useEmployeeStore--<<<<*/
@@ -54,9 +60,11 @@ function login(user) { // функция чтобы залогиница
   userName.value = ''
   password.value = ''
 }
+
 function logUot(user) { // функция чтобы разлогиниться
   user.logged = !user.logged
 }
+
 /*LOGIN <<<*/
 
 const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${testProgress}%, #ffffff 100%)`
@@ -97,9 +105,10 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     </div>
     <!--button-->
 
-    <div  class="sidebar__content">
+    <div class="sidebar__content">
       <!--about-person-->
-      <div v-show="user.logged === true" class="sidebar__about-person about-person" v-for="(user, index) in users" :key="index">
+      <div v-show="user.logged === true" class="sidebar__about-person about-person" v-for="(user, index) in users"
+           :key="index">
         <div class="about-person__name">
           <h3>{{ user.name }}</h3>
         </div>
@@ -110,43 +119,121 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
         <div class="about-person__position">{{ user.position }}</div>
       </div>
 
-      <div v-show="user.logged === false" class="sidebar__about-person about-person" v-for="(user, index) in users" :key="index">
+      <div v-show="user.logged === false" class="sidebar__about-person about-person" v-for="(user, index) in users"
+           :key="index">
         <div class="about-person__name">
           <h3> xxx </h3>
         </div>
         <div class="about-person__age"><b>xxx </b></div>
         <div class="about-person__personnel-umber">
-          <p>Таб №: ГОКИ  xxx </p>
+          <p>Таб №: ГОКИ xxx </p>
         </div>
-        <div class="about-person__position"> xxx </div>
+        <div class="about-person__position"> xxx</div>
       </div>
       <!--about-person-->
 
       <!--training-->
-      <div class="sidebar__training training">
-        <div class="training__container" v-for="(item, index) in trainingAndCertification" :key="index">
-          <div class="training__card">
+      <!--      <div class="sidebar__training training">-->
+      <!--        <div class="training__container" v-for="(item, index) in trainingAndCertification" :key="index">-->
+      <!--          <div class="training__card">-->
 
-              <div class="training__card-title">
-                <h3>{{ item.title }}</h3>
-              </div>
-            <div :class="fun(item)">
+      <!--              <div class="training__card-title">-->
+      <!--                <h3>{{ item.title }}</h3>-->
+      <!--              </div>-->
+      <!--            <div :class="fun(item)">-->
+      <!--              <div class="training__card-diagram">-->
+      <!--                <img class="training__card-img"-->
+      <!--                     :src="item.url"-->
+      <!--                     alt="img"-->
+      <!--                      v-show="item.title === 'Инструктаж' || item.title === 'Предсменный экзаменатор'"-->
+      <!--                />-->
+      <!--                <span class="training__card-diagram_test" v-show="item.title === 'Тестов выполнено'">{{item.tests}}</span>-->
+      <!--                <span class="training__card-diagram_days" v-show="item.title === 'Аттестация через'">{{certificationThrough}}</span>-->
+      <!--              </div>-->
+      <!--            </div>-->
+
+      <!--          </div>-->
+      <!--        </div>-->
+
+
+      <!--      </div>-->
+
+      <!-- training instructions >>>>>-->
+      <div class="sidebar__training training">
+        <div class="training__container">
+          <div class="training__card">
+            <div class="training__card-title">
+              <h3>{{ trainingAndCertification[0].title }}</h3>
+            </div>
+            <div class="training__circle" :class="fun(trainingAndCertification[0])">
               <div class="training__card-diagram">
-                <img class="training__card-img"
-                     :src="item.url"
-                     alt="img"
-                      v-show="item.title === 'Инструктаж' || item.title === 'Предсменный экзаменатор'"
-                />
-                <span class="training__card-diagram_test" v-show="item.title === 'Тестов выполнено'">{{item.tests}}</span>
-                <span class="training__card-diagram_days" v-show="item.title === 'Аттестация через'">{{certificationThrough}}</span>
+                <div class="training__card-diagram_test">
+                  <img :src="trainingAndCertification[0].url" alt="">
+                </div>
               </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
+      <!-- training instructions <<<<<-->
+
+      <!-- training examiner >>>>>-->
+      <div class="sidebar__training training">
+        <div class="training__container">
+          <div class="training__card">
+            <div class="training__card-title">
+              <h3>{{ trainingAndCertification[1].title }}</h3>
+            </div>
+            <div class="training__circle" :class="fun(trainingAndCertification[1])">
+              <div class="training__card-diagram">
+                <div class="training__card-diagram_test">
+                  <img :src="trainingAndCertification[1].url" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- training examiner <<<<<-->
+
+      <!--training tests-->
+      <div class="sidebar__training training">
+        <div class="training__container">
+          <div class="training__card">
+            <div class="training__card-title">
+              <h3>{{ trainingAndCertification[2].title }}</h3>
+            </div>
+            <div class="training__circle" :style="testProgress">
+              <div class="training__card-diagram">
+                <div class="training__card-diagram_test">
+                  {{ totalNumberOfTests.passedTests }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--training tests---<<<<<-->
+      <!--training certification >>>>>>-->
+
+      <div class="sidebar__training training">
+        <div class="training__container">
+          <div class="training__card">
+            <div class="training__card-title">
+              <h3>{{ trainingAndCertification[3].title }}</h3>
+            </div>
+            <div class="training__circle" :class="[{'training__circle_green': certificationThrough > 30}, {'training__circle_orange': certificationThrough < 30}]">
+              <div class="training__card-diagram">
+                <div class="training__card-diagram_days">
+                  {{ certificationThrough }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--training certification---<<<<<-->
       <!--training-->
     </div>
   </aside>
@@ -168,12 +255,14 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     &__date {
 
     }
+
     &__login {
       display: flex;
       gap: 10px;
       height: 20px;
 
     }
+
     &__button-login {
       color: white;
     }
@@ -280,6 +369,7 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
 
   /*training >>*/
   .training {
+
     &__container {
       display: flex;
       background-color: $bg-content_dark;
@@ -298,7 +388,8 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       text-align: center;
       justify-content: center;
     }
-    &__card-diagram_test, &__card-diagram_days{
+
+    &__card-diagram_test, &__card-diagram_days, {
       z-index: 2;
       position: absolute;
       font-size: 36px;
@@ -307,12 +398,13 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     }
 
     &__circle {
-      //background-color: $bg-sidebar_dark;
-      background: linear-gradient(to left, #00ff00 90% , #ffffff 50%, #ffffff 100%) ;
+      background-color: $bg-sidebar_dark;
+      //background: linear-gradient(to left, #00ff00 90% , #ffffff 50%, #ffffff 100%) ;
       width: 150px;
       height: 150px;
       border-radius: 50%;
       position: relative;
+
       &:before {
         content: '';
         width: 130px;
@@ -324,9 +416,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
         left: 10px;
       }
     }
+
     &__circle_orange {
       background-color: #EF7F1A;
     }
+
     &__circle_green {
       background-color: #4dcb2a;
     }
@@ -337,11 +431,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     }
 
     &__card-diagram {
-
     }
+
     &__card-img {
       position: absolute;
-      z-index: 2 ;
+      z-index: 2;
       top: 34px;
       left: 46px;
     }
