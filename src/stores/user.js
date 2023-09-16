@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {reactive} from "vue";
+import {computed, reactive} from "vue";
 
 
 const useUserStore = defineStore('employee', () => {
@@ -13,6 +13,20 @@ const useUserStore = defineStore('employee', () => {
     }])
 
     const certificationThrough = 111 // отчет до окончания аттестации
+    const totalNumberOfTests = reactive({
+        total: 500,
+        passedTests: 122
+
+    })
+    const getBarGradient = (total, passed) => {
+        const percentage = Math.floor(total/passed)*100
+        return `linear-gradient(to right, green ${percentage}%,lightgray ${percentage}%)`
+    }
+    const testProgress = computed(() => {
+        return {
+            background: getBarGradient(totalNumberOfTests.total, totalNumberOfTests.passedTests)
+        }
+    })
 
     const trainingAndCertification = reactive([ // данные об аттестации
         {
@@ -44,7 +58,10 @@ const useUserStore = defineStore('employee', () => {
     return {
         users,
         trainingAndCertification,
-        certificationThrough
+        certificationThrough,
+        testProgress,
+        totalNumberOfTests,
+        getBarGradient
     }
 })
 export default useUserStore

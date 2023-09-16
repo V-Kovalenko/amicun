@@ -15,7 +15,7 @@ const toggleStyle = computed(() => [  // динамический стиль к�
 
 /*--данные из useEmployeeStore-->>>>*/
 const employeeStore = useUserStore()
-const {users, trainingAndCertification, certificationThrough} = toRefs(employeeStore)
+const {users, trainingAndCertification, certificationThrough, testProgress} = toRefs(employeeStore)
 const diagramStyles = computed(() => ['training__circle',
   {'training__circle_blue': trainingAndCertification.value.colors === null},{'training__circle_orange': trainingAndCertification.value.colors === false},
     {'training__circle_green': trainingAndCertification.value.colors === true}
@@ -58,6 +58,8 @@ function logUot(user) { // функция чтобы разлогиниться
   user.logged = !user.logged
 }
 /*LOGIN <<<*/
+
+const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${testProgress}%, #ffffff 100%)`
 </script>
 
 <template>
@@ -305,7 +307,8 @@ function logUot(user) { // функция чтобы разлогиниться
     }
 
     &__circle {
-      background-color: $bg-sidebar_dark;
+      //background-color: $bg-sidebar_dark;
+      background: linear-gradient(to left, #00ff00 90% , #ffffff 50%, #ffffff 100%) ;
       width: 150px;
       height: 150px;
       border-radius: 50%;
