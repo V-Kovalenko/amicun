@@ -130,7 +130,7 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
 
       <!--training   >>>>>-->
       <div class="sidebar__training training">
-      <!-- training instructions >>>>>-->
+        <!-- training instructions >>>>>-->
 
         <div class="training__container">
           <div class="training__card">
@@ -147,9 +147,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
           </div>
         </div>
 
-      <!-- training instructions <<<<<-->
+        <!-- training instructions <<<<<-->
 
-      <!-- training examiner >>>>>-->
+        <!-- training examiner >>>>>-->
 
         <div class="training__container">
           <div class="training__card">
@@ -166,9 +166,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
           </div>
         </div>
 
-      <!-- training examiner <<<<<-->
+        <!-- training examiner <<<<<-->
 
-      <!--training tests-->
+        <!--training tests-->
 
         <div class="training__container">
           <div class="training__card">
@@ -185,8 +185,8 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
           </div>
         </div>
 
-      <!--training tests---<<<<<-->
-      <!--training certification >>>>>>-->
+        <!--training tests---<<<<<-->
+        <!--training certification >>>>>>-->
 
 
         <div class="training__container">
@@ -194,7 +194,8 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
             <div class="training__card-title">
               <h3>{{ trainingAndCertification[3].title }}</h3>
             </div>
-            <div class="training__circle" :class="[{'training__circle_green': certificationThrough > 30}, {'training__circle_orange': certificationThrough < 30}]">
+            <div class="training__circle"
+                 :class="[{'training__circle_green': certificationThrough > 30}, {'training__circle_orange': certificationThrough < 30}]">
               <div class="training__card-diagram">
                 <div class="training__card-diagram_days">
                   {{ certificationThrough }}
@@ -224,13 +225,23 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     position: relative;
 
     &__date {
+      @media screen and (min-width: 3840px) {
+        font-size: 2.1rem;
+
+      }
 
     }
 
     &__login {
       display: flex;
-      gap: 10px;
-      height: 20px;
+      gap: 0.625rem;
+      height: 1.25rem;
+      @media screen and (min-width: 3840px) {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.7rem;
+
+      }
 
     }
 
@@ -244,12 +255,12 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     }
 
     &__icon {
-      margin-left: 10px;
+      margin-left: 0.625rem;
     }
 
     &__button {
-      width: 45px;
-      height: 20px;
+      width: 2.8125rem;
+      height: 1.25rem;
       background-color: $bg-sidebar_dark;
       border-radius: 1rem;
       display: flex;
@@ -257,22 +268,27 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       justify-content: start;
       text-align: center;
       position: absolute;
-      top: 50px;
-      left: 530px;
+      top: 3.125rem;
+      left: 33.125rem;
       cursor: pointer;
+      @media screen and (min-width: 3840px) {
+        top: 9rem;
+
+      }
+
     }
 
     &__button_dark {
       background-color: $bg-sidebar_light;
-      width: 45px;
-      height: 20px;
+      width: 2.8125rem;
+      height: 1.25rem;
       border-radius: 1rem;
 
     }
 
     &__button-slider {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       background-color: #000000;
       border-radius: 50%;
       top: 0;
@@ -281,13 +297,13 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     }
 
     &__button-slider_black {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       background-color: #ffffff;
       border-radius: 50%;
       top: 0;
       left: 0;
-      transform: translateX(40px - 15px);
+      transform: translateX(2.5rem - 0.9375rem);
     }
 
   }
@@ -298,7 +314,7 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
   }
 
   &__about-person {
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
 
   /*about-person >>*/
@@ -307,26 +323,29 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     background-color: $bg-content_dark;
     flex-direction: column;
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
-    border-radius: 5px;
-    margin-bottom: 40px;
+    border-radius: 0.3125rem;
+    margin-bottom: 2.5rem;
 
     &__name {
-      font-size: 24px;
+      font-size: 1.5rem;
+      @media screen and (min-width: 3840px) {
+        font-size: 2.5rem;
+      }
+
 
     }
 
     &__age {
-      font-size: 18px;
-    }
-
-    &__personnel-umber {
-
+      font-size: 1.125rem;
+      @media screen and (min-width: 3840px) {
+        font-size: 2.5rem;
+      }
     }
 
     &__position {
-      line-height: 16px;
+      line-height: 1rem;
     }
   }
 
@@ -334,8 +353,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
   &__training {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1.25rem;
     justify-content: space-between;
+
   }
 
   /*training >>*/
@@ -352,39 +372,39 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      width: 250px;
-      height: 250px;
-      padding: 15px;
+      width: 15.625em;
+      height: 15.625em;
+      padding: 0.9375rem;
       align-items: center;
       text-align: center;
       justify-content: center;
+
     }
 
     &__card-diagram_test, &__card-diagram_days, {
       z-index: 2;
       position: absolute;
       font-size: 36px;
-      top: 48px;
-      left: 43px;
+      top: 2.25rem;
+      left: 2.6875rem;
     }
 
     &__circle {
       background-color: $bg-sidebar_dark;
-      //background: linear-gradient(to left, #00ff00 90% , #ffffff 50%, #ffffff 100%) ;
-      width: 150px;
-      height: 150px;
+      width: 9.375rem;
+      height: 9.375rem;
       border-radius: 50%;
       position: relative;
 
       &:before {
         content: '';
-        width: 130px;
-        height: 130px;
+        width: 8.125rem;
+        height: 8.125rem;
         background-color: $bg-content_dark;
         position: absolute;
         border-radius: 50%;
-        top: 10px;
-        left: 10px;
+        top: 0.625rem;
+        left: 0.625rem;
       }
     }
 
@@ -397,8 +417,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     }
 
     &__card-title {
-      line-height: 20px;
-      margin-bottom: 20px;
+      line-height: 1.25rem;
+      margin-bottom: 1.25rem;
+
     }
 
     &__card-diagram {
@@ -407,8 +428,8 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     &__card-img {
       position: absolute;
       z-index: 2;
-      top: 34px;
-      left: 46px;
+      top: 2.125rem;
+      left: 2.875rem;
     }
   }
 
