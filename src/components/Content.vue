@@ -125,11 +125,6 @@ const countMessage = ref(0)
 
     }
 
-    //@media screen and (min-width: 1280px) and (max-width: 3840px) {
-    //  width: 10rem;
-    //  top: 1rem;
-    //  right: 2rem;
-    //}
   }
 
   &__card {

@@ -16,8 +16,6 @@ const {colorTheme} = toRefs(colorThemeStore)
 
 <style scoped lang="scss">
 @import "@/assets/scss/main";
-@import "@/assets/scss/themes/dark-theme";
-@import "@/assets/scss/themes/light-theme";
   .app {
     min-height: 100vh;
 
