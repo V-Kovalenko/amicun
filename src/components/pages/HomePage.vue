@@ -30,10 +30,12 @@ const {colorTheme} = toRefs(colorThemeStore)
 
 
   &__sidebar {
-    width: 620px;
+    width: 38.75rem;
     grid-area: aside;
     border-radius: 0 12px 12px 0;
-    //height: 100vh;
+    @media screen and (min-width: 1920px) {
+      width: 48.75rem;
+    }
   }
 
   &__content {

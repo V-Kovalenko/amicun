@@ -227,7 +227,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     &__date {
       @media screen and (min-width: 3840px) {
         font-size: 2.1rem;
-
+      }
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.5rem;
       }
 
     }
@@ -240,22 +242,33 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
         display: flex;
         flex-direction: column;
         font-size: 1.7rem;
-
+      }
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
       }
 
     }
 
     &__button-login {
       color: white;
+
     }
 
     &__logout {
       display: flex;
       cursor: pointer;
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.6rem;
+      }
     }
 
     &__icon {
       margin-left: 0.625rem;
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 2rem;
+      }
     }
 
     &__button {
@@ -273,7 +286,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       cursor: pointer;
       @media screen and (min-width: 3840px) {
         top: 9rem;
-
+      }
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        top: 8rem;
       }
 
     }
@@ -304,6 +319,7 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       top: 0;
       left: 0;
       transform: translateX(2.5rem - 0.9375rem);
+
     }
 
   }
@@ -315,6 +331,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
 
   &__about-person {
     margin-top: 6.25rem;
+    @media screen and (min-width: 1920px) and (max-width: 3839px) {
+      font-size: 1.5em;
+    }
   }
 
   /*about-person >>*/
@@ -333,6 +352,9 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       @media screen and (min-width: 3840px) {
         font-size: 2.5rem;
       }
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.5em;
+      }
 
 
     }
@@ -342,10 +364,17 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       @media screen and (min-width: 3840px) {
         font-size: 2.5rem;
       }
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.2em;
+      }
     }
 
     &__position {
       line-height: 1rem;
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        font-size: 1.8rem;
+        line-height: 2rem;
+      }
     }
   }
 
@@ -378,6 +407,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
       align-items: center;
       text-align: center;
       justify-content: center;
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        width: 20.625em;
+        height: 23.625em;
+
+      }
 
     }
 
@@ -419,6 +453,11 @@ const gradient = `linear-gradient(to right, #00ff00 ${testProgress}%, #ffffff ${
     &__card-title {
       line-height: 1.25rem;
       margin-bottom: 1.25rem;
+      @media screen and (min-width: 1920px) and (max-width: 3839px) {
+        line-height: 1.5rem;
+        margin-bottom: 4.6rem;
+        font-size: 1.8rem;
+      }
 
     }
 
